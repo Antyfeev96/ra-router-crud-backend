@@ -26,10 +26,10 @@ router.post('/posts', async (ctx, next) => {
 
     if (id !== 0) {
         posts = posts.map(o => o.id !== id ? o : {...o, content: content});
-        console.log(posts);
         console.log({...JSON.parse(ctx.request.body)});
+        console.log(posts);
         ctx.response.status = 204;
-        // return;
+        return;
     }
     posts.push({content, id: nextId++, created: moment().format('HH:mm:ss')});
     ctx.response.status = 204;
